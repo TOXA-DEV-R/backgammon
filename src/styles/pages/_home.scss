@@ -1,0 +1,7 @@
+@use '../abstract/mixins'as mi;
+
+@include mi.media-sm {
+    .container {
+        width: 1200px;
+    }
+}

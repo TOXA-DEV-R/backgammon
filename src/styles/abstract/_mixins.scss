@@ -1,0 +1,46 @@
+@mixin font_size($size) {
+    $fontBasic: 16;
+    font-size: calc($size / $fontBasic);
+}
+
+@mixin flex_1() {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex_3() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin media-sm {
+    @media only screen and (min-width: 576px) {
+        @content;
+    }
+
+}
+
+@mixin media-md {
+    @media only screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin media-lg {
+    @media only screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin media-xl {
+    @media only screen and (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin media-xxl {
+    @media only screen and (min-width: 1300px) {
+        @content;
+    }
+}
