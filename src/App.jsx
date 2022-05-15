@@ -1,10 +1,11 @@
 /** @format */
 
-import "./styles/main.scss";
 import React from "react";
+import "./styles/main.scss";
+import Backgammon from "./container/Backgammon";
 
 const App = () => {
-  return <div>App</div>;
+  return <Backgammon />;
 };
 
 export default App;

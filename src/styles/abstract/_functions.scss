@@ -1,0 +1,3 @@
+@function calc-px($getResult) {
+    @return calc($getResult / 16);
+}

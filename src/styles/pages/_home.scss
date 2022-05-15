@@ -1,7 +1,197 @@
 @use '../abstract/mixins'as mi;
+@use '../abstract/functions.scss'as fun;
 
-@include mi.media-sm {
-    .container {
-        width: 1200px;
+
+
+.backgammon {
+    width: 100%;
+    height: 100vh;
+    background: url('src/assets/img/back.jpg') center center no-repeat;
+    background-size: cover;
+    @include mi.flex_2;
+
+    &-container {
+        width: 65%;
+        height: 80vh;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        box-shadow: 0 0 25px -10px black;
+        position: relative;
+
+    }
+
+    &-dice {
+        position: absolute;
+        top: fun.calc-px(70rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: fun.calc-px(100rem);
+        height: fun.calc-px(100rem);
+        box-shadow: 0 0 25px -10px black;
+        z-index: 10;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-top {
+        position: absolute;
+        top: fun.calc-px(25rem);
+        left: 50%;
+        transform: translateX(-50%);
+
+        span {
+            margin-right: fun.calc-px(5rem);
+
+            svg {
+                path {
+                    stroke: red;
+                }
+            }
+        }
+
+        &__btn {
+            background-color: transparent;
+            border: none;
+            @include mi.flex_2;
+            cursor: pointer;
+        }
+    }
+
+    &-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        @include mi.flex_2;
+        flex-direction: column;
+
+        &__roll,
+        &__hold,
+        &__final {
+            background-color: transparent;
+            border: none;
+            margin-bottom: fun.calc-px(25rem);
+            cursor: pointer;
+        }
+
+        &__final {
+            border: 1px solid rgb(131, 131, 131);
+            padding: fun.calc-px(5rem) fun.calc-px(8rem);
+        }
+    }
+
+    &-section {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    &-player {
+        padding: fun.calc-px(100rem);
+        background-color: white;
+        @include mi.flex_2;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        &.active {
+            cursor: pointer;
+            background-color: #f7f7f7;
+        }
+
+        &__iswinner {
+            position: absolute;
+            top: fun.calc-px(15rem);
+            left: 50%;
+            transform: translateX(-50%);
+            @include mi.flex_2;
+            flex-direction: column;
+
+            span {
+                margin-right: fun.calc-px(10rem)
+            }
+
+            &.winner {
+                color: green;
+
+                .icon {
+                    path {
+                        fill: green;
+                    }
+                }
+            }
+
+            &.nowinner {
+                color: red;
+
+                .icon {
+                    path {
+                        fill: red;
+                    }
+                }
+            }
+
+            .result {
+                color: green;
+                font-size: fun.calc-px(25rem);
+                text-decoration: underline;
+            }
+        }
+
+        &__top {
+            @include mi.flex_2;
+            flex-direction: column;
+
+        }
+
+        &__header {
+            font-size: fun.calc-px(35rem);
+            @include mi.flex_2;
+
+            span {
+                margin-left: fun.calc-px(10rem);
+
+                &.active {
+                    svg {
+                        path {
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__total {
+            margin-top: fun.calc-px(10rem);
+
+            span {
+                font-size: fun.calc-px(50rem);
+                font-weight: 200;
+                color: red;
+            }
+        }
+
+        &__current {
+            width: fun.calc-px(130rem);
+            height: fun.calc-px(80rem);
+            background-color: rgb(255, 95, 95);
+            @include mi.flex_3;
+            flex-direction: column;
+
+            span:nth-of-type(1) {
+                color: black;
+            }
+
+            span:nth-of-type(2) {
+                margin-top: fun.calc-px(5rem);
+                font-size: fun.calc-px(25rem);
+                font-weight: 200;
+                color: white;
+            }
+        }
     }
 }
