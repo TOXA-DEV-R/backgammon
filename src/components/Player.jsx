@@ -1,7 +1,9 @@
 /** @format */
 
-import React, { Fragment } from "react";
+import React, { Fragment, memo, useRef } from "react";
 import { GoPrimitiveDot, FaRegSmileBeam, CgSmileSad } from "react-icons/all";
+import { useSelector } from "react-redux";
+import { SUCCESS } from "../consts/index";
 
 const Player = ({
   isClass,
@@ -15,18 +17,32 @@ const Player = ({
   const MAX = 7;
   const MIN = 1;
   const random = Math.floor(Math.random() * (MAX - MIN) + MIN);
+  const { firstPlayer, secondPlayer } = useSelector((store) => store.player);
+  const plyerRef = useRef(null);
 
   return (
     <div
       className={`backgammon-player ${isClass ? "active" : ""}`}
-      onClick={() => randomPlayer(random)}
+      onClick={() => {
+        if (
+          firstPlayer.iswinner === SUCCESS ||
+          secondPlayer.iswinner === SUCCESS
+        ) {
+          plyerRef.current.disabled = true;
+          return;
+        } else {
+          plyerRef.current.disabled = false;
+        }
+        randomPlayer(random);
+      }}
+      ref={plyerRef}
     >
       <h1
         className={`backgammon-player__iswinner ${
-          iswinner === "success" ? "winner" : "nowinner"
+          iswinner === SUCCESS ? "winner" : "nowinner"
         }`}
       >
-        {iswinner.length === 0 ? null : iswinner === "success" ? (
+        {iswinner.length === 0 ? null : iswinner === SUCCESS ? (
           <Fragment>
             <span className="icon">
               <FaRegSmileBeam size={30} />
@@ -61,4 +77,4 @@ const Player = ({
   );
 };
 
-export default Player;
+export default memo(Player);

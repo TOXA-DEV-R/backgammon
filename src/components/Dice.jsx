@@ -1,7 +1,8 @@
 /** @format */
 
-import React from "react";
+import React, { memo, useEffect, useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
+import { SECOND_PLAYER, FIRST_PLAYER } from "../consts/index";
 
 const Dice = () => {
   const dices = [
@@ -20,11 +21,11 @@ const Dice = () => {
   return (
     <div className="backgammon-dice">
       {dices.map(({ path, id }) => {
-        if (controlPlayer === "FIRST_PLAYER") {
+        if (controlPlayer === FIRST_PLAYER) {
           if (firstPlayer.randomNumber === id) {
             return <img src={`src/assets/img/${path}`} key={id} alt="Dice" />;
           }
-        } else {
+        } else if (controlPlayer === SECOND_PLAYER) {
           if (secondPlayer.randomNumber === id) {
             return <img src={`src/assets/img/${path}`} key={id} alt="Dice" />;
           }
@@ -34,4 +35,4 @@ const Dice = () => {
   );
 };
 
-export default Dice;
+export default memo(Dice);

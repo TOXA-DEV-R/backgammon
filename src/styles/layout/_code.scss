@@ -1,0 +1,161 @@
+@use '../abstract/mixins'as mi;
+@use '../abstract/functions.scss'as fun;
+
+.modal {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    @include mi.flex_3;
+    background-color: rgba(0, 0, 0, 0.26);
+
+    &-container {
+        padding: fun.calc-px(40rem) fun.calc-px(50rem);
+        background-color: white;
+        border-radius: fun.calc-px(5rem);
+        box-shadow: 0 0 17px -11px black;
+    }
+
+    &__btn {
+        background-color: green;
+        border: none;
+        border-radius: fun.calc-px(5rem);
+        font-size: fun.calc-px(21rem);
+        color: white;
+        padding: fun.calc-px(10rem) fun.calc-px(20rem);
+        cursor: pointer;
+
+        &:nth-of-type(2) {
+            background-color: red;
+            margin-left: fun.calc-px(15rem);
+        }
+    }
+}
+
+.final-score {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    @include mi.flex_3;
+    background-color: rgba(0, 0, 0, 0.26);
+
+    &-container {
+        // max-width: fun.calc-px(700rem);
+        // width: 100%;
+        padding: fun.calc-px(35rem);
+        background-color: white;
+        border-radius: fun.calc-px(5rem);
+        box-shadow: 0 0 17px -11px black;
+        @include mi.flex_2;
+        flex-direction: column;
+    }
+
+    &-row {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: fun.calc-px(30rem);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: fun.calc-px(18rem);
+        @include mi.flex_2;
+        justify-content: flex-start;
+        background-color: rgb(255 172 1);
+        padding: fun.calc-px(10rem) fun.calc-px(15rem);
+        border-radius: fun.calc-px(4rem);
+        color: white;
+
+        span {
+            color: rgb(255, 0, 0);
+            text-decoration: underline;
+            font-size: fun.calc-px(25rem);
+            margin: 0 fun.calc-px(4rem);
+        }
+
+        // &.active {
+        //     color: green;
+
+        // }
+        &:last-of-type {
+            justify-content: flex-end;
+        }
+
+    }
+
+    &__title+span {
+        display: flex;
+    }
+
+    &__btn {
+        margin-top: fun.calc-px(25rem);
+        padding: fun.calc-px(10rem) fun.calc-px(15rem);
+        border: 1px solid rgb(202, 202, 202);
+        border-radius: fun.calc-px(4rem);
+        background-color: transparent;
+        box-shadow: 0 0 20px -10px rgb(0, 0, 0);
+        cursor: pointer;
+        transition: all 250ms ease-in-out;
+
+        &:hover {
+            box-shadow: inset 0 0 20px -10px black;
+
+        }
+    }
+}
+
+.modal-winner {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    @include mi.flex_3;
+    background-color: rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+
+    &-container {
+        padding: fun.calc-px(35rem);
+        background-color: white;
+        border-radius: fun.calc-px(5rem);
+        box-shadow: 0 0 17px -11px black;
+        @include mi.flex_2;
+        display: grid;
+        grid-template-columns: fun.calc-px(330rem) fun.calc-px(330rem);
+    }
+
+    &__title {
+        font-size: fun.calc-px(15rem);
+        line-height: fun.calc-px(17rem);
+        box-shadow: 0 0 10px -5px black;
+        border-radius: fun.calc-px(5rem);
+        padding: fun.calc-px(10rem);
+        text-align: center;
+
+        span {
+            color: rgb(54, 54, 54);
+            margin-top: fun.calc-px(10rem);
+            display: block;
+
+            b {
+                font-size: fun.calc-px(20rem);
+                text-decoration: underline;
+                color: red;
+            }
+        }
+
+        &:last-of-type {
+            margin-left: fun.calc-px(20rem);
+        }
+    }
+}
